@@ -1,4 +1,4 @@
-import { equal, ok } from 'zoroaster/assert'
+import { equal, deepEqual } from 'zoroaster/assert'
 import Context from '../context'
 import rexml from '../../src'
 
@@ -8,14 +8,20 @@ const T = {
   'is a function'() {
     equal(typeof rexml, 'function')
   },
-  async 'calls package without error'() {
-    await rexml()
-  },
-  async 'gets a link to the fixture'({ FIXTURE }) {
-    const res = await rexml({
-      type: FIXTURE,
+  'extracts tags'() {
+    const c = 'Hello World'
+    const xml = `
+<html>
+  <div id="1" class="t" contenteditable>${c}</div>
+</html>
+`
+    const [{ content, props }] = rexml('div', xml)
+    deepEqual(props, {
+      contenteditable: true,
+      class: 't',
+      id: 1,
     })
-    ok(res, FIXTURE)
+    equal(content, c)
   },
 }
 

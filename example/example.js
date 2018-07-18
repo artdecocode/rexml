@@ -1,6 +1,17 @@
-/* yarn example */
-import rexml from '../src'
+/* yarn example/ */
+import extractTags from '../src'
 
-(async () => {
-  await rexml()
-})()
+const xml = `
+<html>
+  <div id="1" class="test" contenteditable>
+    Hello World
+  </div>
+</html>
+`
+
+const [{ content, props }] = extractTags('div', xml)
+
+console.log(JSON.stringify({
+  content,
+  props,
+}, null, 2))

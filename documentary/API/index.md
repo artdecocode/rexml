@@ -7,13 +7,15 @@ The package is available by importing its default function:
 import rexml from 'rexml'
 ```
 
-```### rexml
+```### rexml => {content, props}[]
 [
-  ["arg1", "string"],
-  ["arg2?", "boolean"]
+  ["tag", "string"],
+  ["string", "string"]
 ]
 ```
 
-Call this function to get the result you want.
+Extract tags from the XML string. The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
 
-%EXAMPLE: example/example.js, ../src => rexml%
+%EXAMPLE: example/example.js, ../src => rexml, javascript%
+
+%FORK-json example example/example.js%

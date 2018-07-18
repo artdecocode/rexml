@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/rexml.svg)](https://npmjs.org/package/rexml)
 
-`rexml` is a new Node.js npm package. Simple XML parsing with a regular expression.
+`rexml` is a Node.js package for simple XML parsing with a regular expression. It's been tested to work for simple use cases.
 
 ```sh
 yarn add -E rexml
@@ -12,7 +12,7 @@ yarn add -E rexml
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-  * [`rexml(arg1: string, arg2?: boolean)`](#mynewpackagearg1-stringarg2-boolean-void)
+  * [`rexml(tag: string, string: string): {content, props}[]`](#rexmltag-stringstring-string-content-props)
 
 ## API
 
@@ -22,17 +22,39 @@ The package is available by importing its default function:
 import rexml from 'rexml'
 ```
 
-### `rexml(`<br/>&nbsp;&nbsp;`arg1: string,`<br/>&nbsp;&nbsp;`arg2?: boolean,`<br/>`): void`
+### `rexml(`<br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/>`): {content, props}[]`
 
-Call this function to get the result you want.
+Extract tags from the XML string. The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
 
-```js
-/* yarn example */
-import rexml from 'rexml'
+```javascript
+/* yarn example/ */
+import extractTags from 'rexml'
 
-(async () => {
-  await rexml()
-})()
+const xml = `
+<html>
+  <div id="1" class="test" contenteditable>
+    Hello World
+  </div>
+</html>
+`
+
+const [{ content, props }] = extractTags('div', xml)
+
+console.log(JSON.stringify({
+  content,
+  props,
+}, null, 2))
+```
+
+```json
+{
+  "content": "\n    Hello World\n  ",
+  "props": {
+    "contenteditable": true,
+    "id": 1,
+    "class": "test"
+  }
+}
 ```
 
 ---

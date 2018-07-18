@@ -35,21 +35,21 @@ const getPropValue = (val) => {
 }
 
 /**
- * Extract member elements from an XML string.
+ * Extract member elements from an XML string. Numbers and booleans will be parsed into their JS types.
  * @param {string} tag Which tag to extract, e.g., `div`.
  * @param {string} string The XML string.
  * @example
  *
  * const xml = `
 <html>
-  <div id="test" class="t" contenteditable>
+  <div id="1" class="test" contenteditable>
     Hello World
   </div>
 </html>
 `
  * const [{ content, props }] = extractTag('div', xml)
  * // content: Hello World
- * // props: { id: 'test', class: 't', contenteditable: true }
+ * // props: { id: 1, class: 'test', contenteditable: true }
  */
 export const extractTags = (tag, string) => {
   const re = new RegExp(`<${tag}( .[^>]+)?(?: /)?>(?:([\\s\\S]+?)</${tag}>)?`, 'g')

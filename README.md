@@ -32,29 +32,36 @@ import extractTags from 'rexml'
 
 const xml = `
 <html>
-  <div id="1" class="test" contenteditable>
-    Hello World
-  </div>
+  <div id="d1"
+    class="example"
+    contenteditable />
+  <div id="d2" class="example">Hello World</div>
 </html>
 `
 
-const [{ content, props }] = extractTags('div', xml)
+const res = extractTags('div', xml)
 
-console.log(JSON.stringify({
-  content,
-  props,
-}, null, 2))
+console.log(JSON.stringify(res, null, 2))
 ```
 
 ```json
-{
-  "content": "\n    Hello World\n  ",
-  "props": {
-    "contenteditable": true,
-    "id": 1,
-    "class": "test"
+[
+  {
+    "props": {
+      "contenteditable": true,
+      "id": "d1",
+      "class": "example"
+    },
+    "content": ""
+  },
+  {
+    "props": {
+      "id": "d2",
+      "class": "example"
+    },
+    "content": "Hello World"
   }
-}
+]
 ```
 
 ---

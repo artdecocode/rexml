@@ -28,6 +28,16 @@ const T = {
       [att2]: value,
     })
   },
+  'extracts multiple attributes w/ inverse quotes'({ att, att2, value }) {
+    const v1 = `'${value}'`
+    const v2 = `"${value}"`
+    const s = `${att}="${v1}" ${att2}='${v2}'`
+    const res = extractProps(s)
+    deepEqual(res, {
+      [att]: v1,
+      [att2]: v2,
+    })
+  },
   'extracts empty attributes'({ att, att2, value }) {
     const s = `${att}="${value}" ${att2}='${value}' test`
     const res = extractProps(s)

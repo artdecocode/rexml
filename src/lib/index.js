@@ -16,7 +16,8 @@ const getPropValue = (val) => {
 export const extractProps = (s) => {
   const o = {}
   const re = new RegExp(attributeRe.source, 'gu')
-  s.replace(re, (match, name, value) => {
+  s.replace(re, (match, name,  doubleQuoteVal, singleQuoteVal) => {
+    const value = singleQuoteVal || doubleQuoteVal
     const v = value === undefined ? true : value
     const val = getPropValue(v)
     o[name] = val

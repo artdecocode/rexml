@@ -21,9 +21,18 @@ const T = {
       value,
     }])
   },
+  'matches attribute by " with \''({ getMatches }, { att, value }) {
+    const v = `'${value}'`
+    const s = `${att}="${v}"`
+    const res = getMatches(s, attributeRe, ['att', 'value'])
+    deepEqual(res, [{
+      att,
+      value: v,
+    }])
+  },
   'matches attribute by \''({ getMatches }, { att, value }) {
     const s = `${att}='${value}'`
-    const res = getMatches(s, attributeRe, ['att', 'value'])
+    const res = getMatches(s, attributeRe, ['att', '_', 'value'])
     deepEqual(res, [{
       att,
       value,

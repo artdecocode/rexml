@@ -1,3 +1,12 @@
+## 19 July 2018
+
+### 1.1.0
+
+- [fix] Parse inverted quotes (e.g., `attr="'hello' world"`).
+- [fix] Extract attributes with unicode regular expression.
+- [fix] Handle tags without attributes or content.
+- [fix] Process multiple self-closing tags.
+
 ## 18 July 2018
 
 ### 1.0.0

@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/artdecocode/rexml#readme",
   "devDependencies": {
+    "@babel/plugin-proposal-unicode-property-regex": "7.0.0-beta.54",
     "documentary": "1.8.2",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",

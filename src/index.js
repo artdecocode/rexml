@@ -16,7 +16,7 @@ const extractProps = (s) => {
       value: getPropValue(value),
     })
   }
-  const tt = s.replace(propsRe, '').trim().split(' ')
+  const tt = s.replace(propsRe, '').trim().split(/\s+/)
     .filter(a => a)
     .reduce((a, k) => ({ ...a, [k]: true }), {})
   return r.reduce((acc, { key, value }) => ({
@@ -52,7 +52,9 @@ const getPropValue = (val) => {
  * // props: { id: 1, class: 'test', contenteditable: true }
  */
 export const extractTags = (tag, string) => {
-  const re = new RegExp(`<${tag}( .[^>]+)?(?: /)?>(?:([\\s\\S]+?)</${tag}>)?`, 'g')
+  const end1 = new RegExp(' />')
+  const end2 = new RegExp(`>([\\s\\S]+?)</${tag}>`)
+  const re = new RegExp(`<${tag}(\\s+[^>]+?)(?:${end1.source}|${end2.source})`, 'g')
   const r = []
 
   let t

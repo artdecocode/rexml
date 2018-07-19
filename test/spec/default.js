@@ -11,10 +11,10 @@ const T = {
   'extracts tags'() {
     const c = 'Hello World'
     const xml = `
-<html>
-  <div id="1" class="t" contenteditable>${c}</div>
-</html>
-`
+  <html>
+    <div id="1" class="t" contenteditable>${c}</div>
+  </html>
+  `
     const [{ content, props }] = rexml('div', xml)
     deepEqual(props, {
       contenteditable: true,
@@ -22,6 +22,63 @@ const T = {
       id: 1,
     })
     equal(content, c)
+  },
+  'extracts self-closing tags with full tags'() {
+    const c = 'Hello World'
+    const xml = `
+<html>
+  <div id="1" class="t" contenteditable />
+  <div id="2" class="t">${c}</div>
+</html>
+`
+    const res = rexml('div', xml)
+    deepEqual(res, [
+      {
+        content: '',
+        props: {
+          contenteditable: true,
+          class: 't',
+          id: 1,
+        },
+      },
+      {
+        content: c,
+        props: {
+          class: 't',
+          id: 2,
+        },
+      },
+    ])
+  },
+  'extracts tags with new lines'() {
+    const c = 'Hello World'
+    const xml = `
+<html>
+  <div
+    id="1"
+    class="t"
+    contenteditable />
+  <div id="2" class="t">${c}</div>
+</html>
+`
+    const res = rexml('div', xml)
+    deepEqual(res, [
+      {
+        content: '',
+        props: {
+          contenteditable: true,
+          class: 't',
+          id: 1,
+        },
+      },
+      {
+        content: c,
+        props: {
+          class: 't',
+          id: 2,
+        },
+      },
+    ])
   },
 }
 

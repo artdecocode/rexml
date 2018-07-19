@@ -1,37 +1,11 @@
+import { extractProps } from './lib'
+import { attributesRe } from './lib/res'
+
 const execRes = (re, s) => {
   const res = re.exec(s)
   if (!res) return res
   const [, ...args] = res
   return args
-}
-
-const extractProps = (s) => {
-  const propsRe = /(\w+)="(.*?)"/g
-  let t
-  const r = []
-  while ((t = propsRe.exec(s)) !== null) {
-    const [, key, value] = t
-    r.push({
-      key,
-      value: getPropValue(value),
-    })
-  }
-  const tt = s.replace(propsRe, '').trim().split(/\s+/)
-    .filter(a => a)
-    .reduce((a, k) => ({ ...a, [k]: true }), {})
-  return r.reduce((acc, { key, value }) => ({
-    ...acc,
-    [key]: value,
-  }), tt)
-}
-
-const getPropValue = (val) => {
-  if (val == 'true') return true
-  if (val == 'false') return false
-  if (/^\d+$/.test(val)) {
-    return parseInt(val, 10)
-  }
-  return val
 }
 
 /**
@@ -52,9 +26,9 @@ const getPropValue = (val) => {
  * // props: { id: 1, class: 'test', contenteditable: true }
  */
 export const extractTags = (tag, string) => {
-  const end1 = new RegExp(' />')
+  const end1 = /\s*\/>/
   const end2 = new RegExp(`>([\\s\\S]+?)?</${tag}>`)
-  const re = new RegExp(`<${tag}(\\s+[^>]+?)?(?:${end1.source}|${end2.source})`, 'g')
+  const re = new RegExp(`<${tag}${attributesRe.source}?(?:${end1.source}|${end2.source})`, 'gu')
   const r = []
 
   let t

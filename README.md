@@ -48,9 +48,9 @@ console.log(JSON.stringify(res, null, 2))
 [
   {
     "props": {
-      "contenteditable": true,
       "id": "d1",
-      "class": "example"
+      "class": "example",
+      "contenteditable": true
     },
     "content": ""
   },

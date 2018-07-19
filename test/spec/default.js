@@ -8,6 +8,19 @@ const T = {
   'is a function'() {
     equal(typeof rexml, 'function')
   },
+  'extracts attributes with > in the value'() {
+    const content = 'this is a test>'
+    const xml = `<el test="${content}"></el>`
+    const res = rexml('el', xml)
+    deepEqual(res, [
+      {
+        content: '',
+        props: {
+          test: content,
+        },
+      },
+    ])
+  },
   'extracts tags without attributes'() {
     const content = 'Hello World'
     const xml = `<html>${content}</html>`
@@ -132,6 +145,47 @@ const T = {
       },
     ])
   },
+  'extracts xml with various white-spaces'() {
+    const xml = `
+<html lang = "en"
+>
+  <div />
+  <div
+  />
+  <div type  =
+  " test
+  "
+  > Hello
+World
+  </div>
+</html>
+    `
+    const els = rexml('div', xml)
+    deepEqual(els, [
+      {
+        props: {},
+        content: '',
+      },
+      {
+        props: {},
+        content: '',
+      },
+      {
+        props: { type: ' test\n  ' },
+        content: ' Hello\nWorld\n  ',
+      },
+    ])
+  },
 }
 
 export default T
+
+
+{/* <div
+/>
+<div type  =
+" test
+"
+> Hello
+World
+</div> */}

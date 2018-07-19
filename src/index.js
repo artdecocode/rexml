@@ -53,8 +53,8 @@ const getPropValue = (val) => {
  */
 export const extractTags = (tag, string) => {
   const end1 = new RegExp(' />')
-  const end2 = new RegExp(`>([\\s\\S]+?)</${tag}>`)
-  const re = new RegExp(`<${tag}(\\s+[^>]+?)(?:${end1.source}|${end2.source})`, 'g')
+  const end2 = new RegExp(`>([\\s\\S]+?)?</${tag}>`)
+  const re = new RegExp(`<${tag}(\\s+[^>]+?)?(?:${end1.source}|${end2.source})`, 'g')
   const r = []
 
   let t

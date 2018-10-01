@@ -4,11 +4,9 @@
   "description": "Simple XML parsing with a regular expression.",
   "main": "build",
   "scripts": {
-    "t": "zoroaster -b",
-    "test": "zoroaster -b test/spec",
-    "test-build": "BABEL_ENV=test-build yarn test",
-    "test-all": "yarn-s test test-build",
-    "test-watch": "yarn test -w",
+    "t": "zoroaster -b -a",
+    "test": "yarn t test/spec",
+    "test-build": "ALAMODE_ENV=test-build yarn test",
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc documentary -o README.md",
     "rec": "NODE_DEBUG=appshot appshot -T 23 -a Terminal -y 150 -f",
@@ -25,7 +23,10 @@
     "url": "git://github.com/artdecocode/rexml.git"
   },
   "keywords": [
-    "rexml"
+    "rexml",
+    "xml",
+    "parse",
+    "extract"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",
@@ -34,7 +35,10 @@
   },
   "homepage": "https://github.com/artdecocode/rexml#readme",
   "devDependencies": {
+    "@babel/core": "7.1.2",
     "@babel/plugin-proposal-unicode-property-regex": "7.0.0",
+    "@babel/register": "7.0.0",
+    "alamode": "1.5.1",
     "documentary": "1.20.1",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",

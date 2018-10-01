@@ -1,3 +1,9 @@
+## 1 October 2018
+
+### 1.2.0
+
+- [build] Build modules with `alamode`, keep `babel` for regex compilation.
+
 ## 19 July 2018
 
 ### 1.1.0

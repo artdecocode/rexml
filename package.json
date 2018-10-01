@@ -13,7 +13,9 @@
     "e": "node example",
     "example/": "yarn e example/example.js",
     "build": "yarn-s b doc",
-    "b": "b --source-maps"
+    "b1": "babel src -d build",
+    "b2": "alamode build -o build -s",
+    "b": "yarn-s b1 b2"
   },
   "files": [
     "build"
@@ -35,6 +37,7 @@
   },
   "homepage": "https://github.com/artdecocode/rexml#readme",
   "devDependencies": {
+    "@babel/cli": "7.1.2",
     "@babel/core": "7.1.2",
     "@babel/plugin-proposal-unicode-property-regex": "7.0.0",
     "@babel/register": "7.0.0",

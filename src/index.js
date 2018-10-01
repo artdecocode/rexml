@@ -25,7 +25,7 @@ const execRes = (re, s) => {
  * // content: Hello World
  * // props: { id: 1, class: 'test', contenteditable: true }
  */
-export const extractTags = (tag, string) => {
+const extractTags = (tag, string) => {
   const end1 = /\s*\/>/
   const end2 = new RegExp(`>([\\s\\S]+?)?</${tag}>`)
   const re = new RegExp(`<${tag}${attributesRe.source}?(?:${end1.source}|${end2.source})`, 'gu')

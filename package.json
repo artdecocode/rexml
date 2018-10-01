@@ -28,7 +28,9 @@
     "rexml",
     "xml",
     "parse",
-    "extract"
+    "extract",
+    "tags",
+    "attributes"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",

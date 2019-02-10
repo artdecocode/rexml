@@ -79,6 +79,15 @@ ${att2}='${value}'`
       [att]: number,
     })
   },
+  'does not parse'() {
+    const s = 't="false" t1="true" t2="123"'
+    const res = extractProps(s, false)
+    deepEqual(res, {
+      t: 'false',
+      t1: 'true',
+      t2: '123',
+    })
+  },
 }
 
 

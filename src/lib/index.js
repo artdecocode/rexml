@@ -11,15 +11,16 @@ const getPropValue = (val) => {
 
 /**
  * Parse the arguments part of an XML element
- * @param {string} s String to extract attributes from
+ * @param {string} string String to extract attributes from.
+ * @param {parseValue} string Parse `true` and `false` values into a boolean, and numbers into integers. Default `true`.
  */
-export const extractProps = (s) => {
+export const extractProps = (string, parseValue = true) => {
   const o = {}
   const re = new RegExp(attributeRe.source, 'gu')
-  s.replace(re, (match, name,  doubleQuoteVal, singleQuoteVal) => {
+  string.replace(re, (match, name,  doubleQuoteVal, singleQuoteVal) => {
     const value = singleQuoteVal || doubleQuoteVal
     const v = value === undefined ? true : value
-    const val = getPropValue(v)
+    const val = parseValue ? getPropValue(v) : v
     o[name] = val
   })
   return o

@@ -15,7 +15,7 @@ yarn add -E rexml
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
   * [`rexml(tag: string, string: string): {content, props}[]`](#rexmltag-stringstring-string-content-props)
-  * [`extractProps(string: string): Object<string,(boolean|string)>`](#extractpropsstring-string-objectstringbooleanstring)
+  * [`extractProps(string: string, parseValue?: boolean): Object<string,(boolean|string|number)>`](#extractpropsstring-stringparsevalue-boolean-objectstringbooleanstringnumber)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
@@ -74,22 +74,43 @@ console.log(JSON.stringify(res, null, 2))
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true" width="15"></a></p>
 
-### `extractProps(`<br/>&nbsp;&nbsp;`string: string,`<br/>`): Object<string,(boolean|string)>`
+### `extractProps(`<br/>&nbsp;&nbsp;`string: string,`<br/>&nbsp;&nbsp;`parseValue?: boolean,`<br/>`): Object<string,(boolean|string|number)>`
 
-Extracts the properties from the attributes part of the tag and returns them as an object.
+Extracts the properties from the attributes part of the tag and returns them as an object. It will parse values if not specified otherwise.
 
 ```javascript
 import { extractProps } from 'rexml'
 
-const res = extractProps('id="d2" class="example" required')
+const s = `id="d2"
+class="example"
+value="123"
+parsable="true"
+ignore="false"
+required`
 
+const res = extractProps(s)
 console.log(JSON.stringify(res, null, 2))
+
+// don't parse booleans and integers
+const res2 = extractProps(s, false)
+console.log(JSON.stringify(res2, null, 2))
 ```
 
 ```json
 {
   "id": "d2",
   "class": "example",
+  "value": 123,
+  "parsable": true,
+  "ignore": false,
+  "required": true
+}
+{
+  "id": "d2",
+  "class": "example",
+  "value": "123",
+  "parsable": "true",
+  "ignore": "false",
   "required": true
 }
 ```

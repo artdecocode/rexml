@@ -51,3 +51,6 @@ const extractTags = (tag, string) => {
 };
 
 module.exports=extractTags;
+;
+
+module.exports.extractProps = extractProps

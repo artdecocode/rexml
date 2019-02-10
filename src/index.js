@@ -47,4 +47,4 @@ const extractTags = (tag, string) => {
 }
 
 export default extractTags
-export { extractProps } from './lib'
+export { extractProps }

@@ -1,12 +1,15 @@
 import { equal, deepEqual } from 'zoroaster/assert'
 import Context from '../context'
-import rexml from '../../src'
+import rexml, { extractProps } from '../../src'
 
 /** @type {Object.<string, (c: Context)>} */
 const T = {
   context: Context,
   'is a function'() {
     equal(typeof rexml, 'function')
+  },
+  'extractProps is a function'() {
+    equal(typeof extractProps, 'function')
   },
   'extracts attributes with > in the value'() {
     const content = 'this is a test>'

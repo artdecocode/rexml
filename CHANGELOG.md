@@ -1,3 +1,9 @@
+## 10 February 2019
+
+### 1.3.0
+
+- [feature] Expose `extractProps` and add option to disable parsing.
+
 ## 1 October 2018
 
 ### 1.2.0

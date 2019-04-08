@@ -1,3 +1,11 @@
+## 8 April 2019
+
+### [1.4.0](https://github.com/artdecocode/rexml/compare/v1.3.0...v1.4.0)
+
+- [package] Publish the `module` field.
+- [doc] Fix JSDoc + suppress RegExp closure warning.
+- [build] Pre-build regexp.
+
 ## 10 February 2019
 
 ### 1.3.0

@@ -12,7 +12,7 @@ const getPropValue = (val) => {
 /**
  * Parse the arguments part of an XML element
  * @param {string} string String to extract attributes from.
- * @param {parseValue} string Parse `true` and `false` values into a boolean, and numbers into integers. Default `true`.
+ * @param {boolean} parseValue Parse `true` and `false` values into a boolean, and numbers into integers. Default `true`.
  */
        const extractProps = (string, parseValue = true) => {
   const o = {}

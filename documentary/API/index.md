@@ -17,9 +17,9 @@ import rexml from 'rexml'
 
 Extract tags from the XML string. The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
 
-%EXAMPLE: example/example.js, ../src => rexml, javascript%
+%EXAMPLE: example, ../src => rexml, javascript%
 
-%FORK-json example example/example%
+%FORK-json example%
 
 %~ width="15"%
 
@@ -32,8 +32,8 @@ Extract tags from the XML string. The tags are returned as an array with objects
 
 Extracts the properties from the attributes part of the tag and returns them as an object. It will parse values if not specified otherwise.
 
-%EXAMPLE: example/extract-props.js, ../src => rexml, javascript%
+%EXAMPLE: example/extract-props, ../src => rexml, javascript%
 
-%FORK-json example example/extract-props%
+%FORK-json example/extract-props%
 
 %~%

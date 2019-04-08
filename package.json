@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc documentary -o README.md",
     "rec": "NODE_DEBUG=appshot appshot -T 23 -a Terminal -y 150 -f",
-    "e": "node example",
+    "e": "alanode",
     "example/": "yarn e example/example.js",
     "build": "yarn-s b doc",
     "b1": "babel src -d build",
@@ -39,14 +39,14 @@
   },
   "homepage": "https://github.com/artdecocode/rexml#readme",
   "devDependencies": {
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.2.2",
-    "@babel/plugin-proposal-unicode-property-regex": "7.2.0",
-    "@babel/register": "7.0.0",
-    "alamode": "1.7.3",
-    "documentary": "1.21.1",
+    "@babel/cli": "7.4.3",
+    "@babel/core": "7.4.3",
+    "@babel/plugin-proposal-unicode-property-regex": "7.4.0",
+    "@babel/register": "7.4.0",
+    "alamode": "^1.9.2",
+    "documentary": "^1.23.4",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.6.6"
+    "zoroaster": "^3.11.4"
   }
 }

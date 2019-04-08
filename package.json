@@ -2,7 +2,8 @@
   "name": "rexml",
   "version": "1.3.0",
   "description": "Simple XML parsing with a regular expression.",
-  "main": "build",
+  "main": "build/index.js",
+  "module": "src/index.js",
   "scripts": {
     "t": "zoroaster -b -a",
     "test": "yarn t test/spec",
@@ -13,12 +14,12 @@
     "e": "alanode",
     "example/": "yarn e example/example.js",
     "build": "yarn-s b doc",
-    "b1": "babel src -d build",
-    "b2": "alamode build -o build -s",
-    "b": "yarn-s b1 b2"
+    "build-re": "babel src/lib/res0.js -d src/lib/res0.js",
+    "b": "alamode src -o build -s"
   },
   "files": [
-    "build"
+    "build",
+    "src"
   ],
   "repository": {
     "type": "git",

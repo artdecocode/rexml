@@ -78,7 +78,11 @@ console.log(JSON.stringify(res, null, 2))
 
 Extracts the properties from the attributes part of the tag and returns them as an object. It will parse values if not specified otherwise.
 
-```javascript
+<table>
+<tr><th><a href="example/extract-props.js">Source</a></th><th>Output</th></tr>
+<tr><td>
+
+```js
 import { extractProps, extractPropsSpec } from 'rexml'
 
 const s = `id="d2"
@@ -100,6 +104,9 @@ console.log(JSON.stringify(res2, null, 2))
 const res3 = extractPropsSpec(s)
 console.log(JSON.stringify(res3, null, 2))
 ```
+</td>
+<td>
+
 ```json
 {
   "id": "d2",
@@ -128,6 +135,8 @@ console.log(JSON.stringify(res3, null, 2))
   "required": true
 }
 ```
+</td></tr>
+</table>
 
 <p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/4.svg?sanitize=true" width="25"></a></p>
 

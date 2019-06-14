@@ -1,6 +1,6 @@
 {
   "name": "rexml",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple XML parsing with a regular expression.",
   "main": "build/index.js",
   "module": "src/index.js",

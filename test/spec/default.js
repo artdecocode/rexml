@@ -1,6 +1,6 @@
 import { equal, deepEqual } from '@zoroaster/assert'
 import Context from '../context'
-import rexml, { extractProps } from '../../src'
+import rexml, { extractProps, extractTagsSpec } from '../../src'
 
 /** @type {Object.<string, (c: Context)>} */
 const T = {
@@ -182,6 +182,40 @@ World
 }
 
 export default T
+
+export const spec = {
+  'extracts xml with various white-spaces'() {
+    const xml = `
+<html lang = "en"
+>
+  <div />
+  <div
+  />
+  <div type  =
+  " test
+  "
+  > Hello
+World
+  </div>
+</html>
+    `
+    const els = extractTagsSpec('div', xml)
+    deepEqual(els, [
+      {
+        props: {},
+        content: '',
+      },
+      {
+        props: {},
+        content: '',
+      },
+      {
+        props: { type: ' test\n  ' },
+        content: ' Hello\nWorld\n  ',
+      },
+    ])
+  },
+}
 
 
 {/* <div

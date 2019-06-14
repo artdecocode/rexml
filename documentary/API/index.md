@@ -3,7 +3,7 @@
 The package is available by importing its default and named functions:
 
 ```js
-import rexml, { extractProps, extractTagsSpec } from 'rexml'
+import rexml, { extractProps, extractTagsSpec, extractPropSpec } from 'rexml'
 ```
 
 %~ width="25"%

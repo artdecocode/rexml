@@ -2,10 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/rexml.svg)](https://npmjs.org/package/rexml)
 
-`rexml` is a Node.js package for simple XML parsing with a regular expression. It's been tested to work for simple use cases.
+`rexml` is a Node.JS package for simple XML parsing with a regular expression. It's been tested to work for simple use cases (does work on nested tags).
 
 ```sh
-yarn add -E rexml
+yarn add rexml
 ```
 
 <p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/0.svg?sanitize=true"></a></p>
@@ -26,7 +26,7 @@ yarn add -E rexml
 The package is available by importing its default and named functions:
 
 ```js
-import rexml, { extractProps, extractTagsSpec } from 'rexml'
+import rexml, { extractProps, extractTagsSpec, extractPropSpec } from 'rexml'
 ```
 
 <p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true" width="25"></a></p>
@@ -79,13 +79,14 @@ console.log(JSON.stringify(res, null, 2))
 Extracts the properties from the attributes part of the tag and returns them as an object. It will parse values if not specified otherwise.
 
 ```javascript
-import { extractProps } from 'rexml'
+import { extractProps, extractPropsSpec } from 'rexml'
 
 const s = `id="d2"
 class="example"
 value="123"
 parsable="true"
 ignore="false"
+2-non-spec
 required`
 
 const res = extractProps(s)
@@ -94,6 +95,10 @@ console.log(JSON.stringify(res, null, 2))
 // don't parse booleans and integers
 const res2 = extractProps(s, false)
 console.log(JSON.stringify(res2, null, 2))
+
+// conform to the spec
+const res3 = extractPropsSpec(s)
+console.log(JSON.stringify(res3, null, 2))
 ```
 ```json
 {
@@ -102,6 +107,7 @@ console.log(JSON.stringify(res2, null, 2))
   "value": 123,
   "parsable": true,
   "ignore": false,
+  "2-non-spec": true,
   "required": true
 }
 {
@@ -110,6 +116,15 @@ console.log(JSON.stringify(res2, null, 2))
   "value": "123",
   "parsable": "true",
   "ignore": "false",
+  "2-non-spec": true,
+  "required": true
+}
+{
+  "id": "d2",
+  "class": "example",
+  "value": 123,
+  "parsable": true,
+  "ignore": false,
   "required": true
 }
 ```

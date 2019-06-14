@@ -1,5 +1,5 @@
 import mismatch from 'mismatch'
-import { extractProps, getPropValue } from './lib'
+import { extractProps as extractPropsSpec, getPropValue } from './lib'
 import { attributesRe } from './lib/res'
 import { attributesRe as simple, attributeRe as simpleAttribute } from './lib/res-simple'
 
@@ -35,19 +35,29 @@ const extractTags = (tag, string) => {
   const matches = mismatch(re, string, ['attributes', 'v', 'v1', 'v2', 'content'])
   const res = matches.map(({ attributes = '', content = '' }) => {
     const attrs = attributes.replace(/\/$/, '').trim()
-    const m = mismatch(simpleAttribute, attrs, ['key', 'val', 'def', 'f'])
-    const props = m
-      .reduce((acc, { key, val }) => {
-        if (!val) {
-          acc[key] = true
-          return acc
-        }
-        acc[key] = getPropValue(val)
-        return acc
-      }, {})
+    const props = extractProps(attrs)
     return { content, props }
   })
   return res
+}
+
+/**
+ * Extracts the properties from the attributes part of the tag and returns them as an object. It will parse values if not specified otherwise.
+ * @param {string} string The attribute part of the tag.
+ * @param {boolean} parseValue Whether to transform the value into its value.
+ */
+export const extractProps = (string, parseValue = true) => {
+  const m = mismatch(simpleAttribute, string, ['key', 'val', 'def', 'f'])
+  const props = m
+    .reduce((acc, { key, val }) => {
+      if (!val) {
+        acc[key] = true
+        return acc
+      }
+      acc[key] = parseValue ? getPropValue(val) : val
+      return acc
+    }, {})
+  return props
 }
 
 /**
@@ -89,4 +99,4 @@ export const extractTagsSpec = (tag, string) => {
 }
 
 export default extractTags
-export { extractProps }
+export { extractPropsSpec }

@@ -8,7 +8,7 @@
 yarn add -E rexml
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/0.svg?sanitize=true"></a></p>
 
 ## Table Of Contents
 
@@ -16,19 +16,20 @@ yarn add -E rexml
 - [API](#api)
   * [`rexml(tag: string, string: string): {content, props}[]`](#rexmltag-stringstring-string-content-props)
   * [`extractProps(string: string, parseValue?: boolean): Object<string,(boolean|string|number)>`](#extractpropsstring-stringparsevalue-boolean-objectstringbooleanstringnumber)
+  * [`extractTagsSpec(tag: string, string: string): {content, props}[]`](#extracttagsspectag-stringstring-string-content-props)
 - [Copyright](#copyright)
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
 ## API
 
 The package is available by importing its default function:
 
 ```js
-import rexml from 'rexml'
+import rexml, { extractTagsSpec } from 'rexml'
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true" width="15"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true" width="15"></a></p>
 
 ### `rexml(`<br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/>`): {content, props}[]`
 
@@ -55,24 +56,24 @@ console.log(JSON.stringify(res, null, 2))
 ```json
 [
   {
+    "content": "",
     "props": {
       "id": "d1",
       "class": "example",
       "contenteditable": true
-    },
-    "content": ""
+    }
   },
   {
+    "content": "Hello World",
     "props": {
       "id": "d2",
       "class": "example"
-    },
-    "content": "Hello World"
+    }
   }
 ]
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true" width="15"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true" width="15"></a></p>
 
 ### `extractProps(`<br/>&nbsp;&nbsp;`string: string,`<br/>&nbsp;&nbsp;`parseValue?: boolean,`<br/>`): Object<string,(boolean|string|number)>`
 
@@ -95,7 +96,6 @@ console.log(JSON.stringify(res, null, 2))
 const res2 = extractProps(s, false)
 console.log(JSON.stringify(res2, null, 2))
 ```
-
 ```json
 {
   "id": "d2",
@@ -115,7 +115,39 @@ console.log(JSON.stringify(res2, null, 2))
 }
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
+
+### `extractTagsSpec(`<br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/>`): {content, props}[]`
+
+Same as the default method, but confirms to the XML specification in defining attributes.
+
+```javascript
+import { extractTagsSpec } from 'rexml'
+
+const xml = `
+<html>
+  <div id="d1" class="example" contenteditable />
+  <div 5-non-spec>Attributes cannot start with a number.</div>
+</html>`
+
+const res = extractTagsSpec('div', xml)
+
+console.log(JSON.stringify(res, null, 2))
+```
+```json
+[
+  {
+    "props": {
+      "id": "d1",
+      "class": "example",
+      "contenteditable": true
+    },
+    "content": ""
+  }
+]
+```
+
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/5.svg?sanitize=true"></a></p>
 
 ## Copyright
 
@@ -123,18 +155,18 @@ console.log(JSON.stringify(res2, null, 2))
   <tr>
     <th>
       <a href="https://artd.eco">
-        <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" />
+        <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco">
       </a>
     </th>
     <th>© <a href="https://artd.eco">Art Deco</a>   2019</th>
     <th>
       <a href="https://www.technation.sucks" title="Tech Nation Visa">
         <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif"
-          alt="Tech Nation Visa" />
+          alt="Tech Nation Visa">
       </a>
     </th>
     <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
   </tr>
 </table>
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/-1.svg?sanitize=true"></a></p>

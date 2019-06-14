@@ -1,6 +1,6 @@
 import { attributeRe } from './res'
 
-const getPropValue = (val) => {
+export const getPropValue = (val) => {
   if (val == 'true') return true
   if (val == 'false') return false
   if (/^\d+$/.test(val)) {

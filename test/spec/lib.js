@@ -1,4 +1,4 @@
-import { deepEqual } from 'zoroaster/assert'
+import { deepEqual } from '@zoroaster/assert'
 import { extractProps } from '../../src/lib'
 
 const context = {

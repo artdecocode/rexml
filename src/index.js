@@ -1,5 +1,7 @@
-import { extractProps } from './lib'
+import mismatch from 'mismatch'
+import { extractProps, getPropValue } from './lib'
 import { attributesRe } from './lib/res'
+import { attributesRe as simple, attributeRe as simpleAttribute } from './lib/res-simple'
 
 const execRes = (re, s) => {
   const res = re.exec(s)
@@ -26,6 +28,46 @@ const execRes = (re, s) => {
  * // props: { id: 1, class: 'test', contenteditable: true }
  */
 const extractTags = (tag, string) => {
+  const end1 = /\s*\/>/
+  const end2 = new RegExp(`>([\\s\\S]+?)?</${tag}>`)
+  const re = new RegExp(`<${tag}${simple.source}?(?:${end1.source}|${end2.source})`, 'g')
+
+  const matches = mismatch(re, string, ['attributes', 'v', 'v1', 'v2', 'content'])
+  const res = matches.map(({ attributes = '', content = '' }) => {
+    const attrs = attributes.replace(/\/$/, '').trim()
+    const m = mismatch(simpleAttribute, attrs, ['key', 'val', 'def', 'f'])
+    const props = m
+      .reduce((acc, { key, val }) => {
+        if (!val) {
+          acc[key] = true
+          return acc
+        }
+        acc[key] = getPropValue(val)
+        return acc
+      }, {})
+    return { content, props }
+  })
+  return res
+}
+
+/**
+ * Extract member elements from an XML string using the complex regular expression to match attributes that confirms to the XML spec. Numbers and booleans will be parsed into their JS types.
+ * @param {string} tag Which tag to extract, e.g., `div`.
+ * @param {string} string The XML string.
+ * @example
+ *
+ * const xml = `
+<html>
+  <div id="1" class="test" contenteditable>
+    Hello World
+  </div>
+</html>
+`
+ * const [{ content, props }] = extractTag('div', xml)
+ * // content: Hello World
+ * // props: { id: 1, class: 'test', contenteditable: true }
+ */
+export const extractTagsSpec = (tag, string) => {
   const end1 = /\s*\/>/
   const end2 = new RegExp(`>([\\s\\S]+?)?</${tag}>`)
   const re = new RegExp(`<${tag}${attributesRe.source}?(?:${end1.source}|${end2.source})`, 'gu')

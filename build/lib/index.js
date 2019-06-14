@@ -14,7 +14,7 @@ const getPropValue = (val) => {
  * @param {string} string String to extract attributes from.
  * @param {boolean} parseValue Parse `true` and `false` values into a boolean, and numbers into integers. Default `true`.
  */
-       const extractProps = (string, parseValue = true) => {
+const extractProps = (string, parseValue = true) => {
   const o = {}
   const re = new RegExp(attributeRe.source, 'gu')
   string.replace(re, (match, name,  doubleQuoteVal, singleQuoteVal) => {
@@ -27,4 +27,5 @@ const getPropValue = (val) => {
 }
 
 
+module.exports.getPropValue = getPropValue
 module.exports.extractProps = extractProps

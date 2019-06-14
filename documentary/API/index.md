@@ -1,12 +1,12 @@
 ## API
 
-The package is available by importing its default function:
+The package is available by importing its default and named functions:
 
 ```js
-import rexml, { extractTagsSpec } from 'rexml'
+import rexml, { extractProps, extractTagsSpec } from 'rexml'
 ```
 
-%~ width="15"%
+%~ width="25"%
 
 ```### rexml => {content, props}[]
 [
@@ -18,10 +18,9 @@ import rexml, { extractTagsSpec } from 'rexml'
 Extract tags from the XML string. The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
 
 %EXAMPLE: example, ../src => rexml, javascript%
-
 %FORK-json example%
 
-%~ width="15"%
+%~ width="25"%
 
 ```### extractProps => Object<string,(boolean|string|number)>
 [
@@ -35,4 +34,4 @@ Extracts the properties from the attributes part of the tag and returns them as 
 %EXAMPLE: example/extract-props, ../src => rexml, javascript%
 %FORK-json example/extract-props%
 
-%~ width="15"%
+%~ width="25"%

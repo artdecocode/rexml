@@ -23,13 +23,13 @@ yarn add -E rexml
 
 ## API
 
-The package is available by importing its default function:
+The package is available by importing its default and named functions:
 
 ```js
-import rexml, { extractTagsSpec } from 'rexml'
+import rexml, { extractProps, extractTagsSpec } from 'rexml'
 ```
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true" width="15"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true" width="25"></a></p>
 
 ### `rexml(`<br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/>`): {content, props}[]`
 
@@ -52,7 +52,6 @@ const res = extractTags('div', xml)
 
 console.log(JSON.stringify(res, null, 2))
 ```
-
 ```json
 [
   {
@@ -73,7 +72,7 @@ console.log(JSON.stringify(res, null, 2))
 ]
 ```
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true" width="15"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true" width="25"></a></p>
 
 ### `extractProps(`<br/>&nbsp;&nbsp;`string: string,`<br/>&nbsp;&nbsp;`parseValue?: boolean,`<br/>`): Object<string,(boolean|string|number)>`
 
@@ -115,7 +114,7 @@ console.log(JSON.stringify(res2, null, 2))
 }
 ```
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/4.svg?sanitize=true" width="25"></a></p>
 
 ### `extractTagsSpec(`<br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/>`): {content, props}[]`
 

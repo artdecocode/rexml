@@ -1,3 +1,9 @@
+## 14 June 2019
+
+### [2.0.0](https://github.com/artdecocode/rexml/compare/v1.4.0...v2.0.0)
+
+- [feature] Simplify the regex to remove unicode matching, renaming the old method to `extractTagsSpec`.
+
 ## 8 April 2019
 
 ### [1.4.0](https://github.com/artdecocode/rexml/compare/v1.3.0...v1.4.0)

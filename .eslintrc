@@ -1,3 +1,9 @@
 {
-  "extends": "artdeco"
+  "extends": "artdeco",
+  "rules": {
+    "no-console": 0,
+    "quote-props": 0,
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
+  }
 }

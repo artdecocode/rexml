@@ -1,3 +1,9 @@
+## 20 June 2019
+
+### [2.0.2](https://github.com/artdecocode/rexml/compare/v2.0.1...v2.0.2)
+
+- [fix] Quote `mismatch` properties for _Depack_.
+
 ## 14 June 2019
 
 ### [2.0.1](https://github.com/artdecocode/rexml/compare/v2.0.0...v2.0.1)

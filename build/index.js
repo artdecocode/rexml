@@ -32,8 +32,8 @@ const extractTags = (tag, string) => {
   const end2 = new RegExp(`>([\\s\\S]+?)?</${tag}>`)
   const re = new RegExp(`<${tag}${simple.source}?(?:${end1.source}|${end2.source})`, 'g')
 
-  const matches = mismatch(re, string, ['attributes', 'v', 'v1', 'v2', 'content'])
-  const res = matches.map(({ attributes = '', content = '' }) => {
+  const matches = mismatch(re, string, ['a', 'v', 'v1', 'v2', 'c'])
+  const res = matches.map(({ 'a': attributes = '', 'c': content = '' }) => {
     const attrs = attributes.replace(/\/$/, '').trim()
     const props = extractProps(attrs)
     return { content, props }
@@ -49,7 +49,7 @@ const extractTags = (tag, string) => {
 const extractProps = (string, parseValue = true) => {
   const m = mismatch(simpleAttribute, string, ['key', 'val', 'def', 'f'])
   const props = m
-    .reduce((acc, { key, val }) => {
+    .reduce((acc, { 'key': key, 'val': val }) => {
       if (!val) {
         acc[key] = true
         return acc

@@ -1,3 +1,9 @@
+## 27 July 2019
+
+### [2.0.3](https://github.com/artdecocode/rexml/compare/v2.0.2...v2.0.3)
+
+- [fix] Correctly parse empty string attributes (`attr=""`).
+
 ## 20 June 2019
 
 ### [2.0.2](https://github.com/artdecocode/rexml/compare/v2.0.1...v2.0.2)

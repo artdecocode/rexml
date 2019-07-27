@@ -39,12 +39,12 @@
   },
   "homepage": "https://github.com/artdecocode/rexml#readme",
   "devDependencies": {
-    "@babel/cli": "7.4.4",
-    "@babel/core": "7.4.5",
+    "@babel/cli": "7.5.5",
+    "@babel/core": "7.5.5",
     "@babel/plugin-proposal-unicode-property-regex": "7.4.4",
-    "@babel/register": "7.4.4",
-    "alamode": "^2.3.4",
-    "documentary": "^1.27.3",
+    "@babel/register": "7.5.5",
+    "alamode": "^2.3.6",
+    "documentary": "^1.28.0",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
     "zoroaster": "^4.1.1-alpha"

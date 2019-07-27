@@ -50,7 +50,7 @@ const extractProps = (string, parseValue = true) => {
   const m = mismatch(simpleAttribute, string, ['key', 'val', 'def', 'f'])
   const props = m
     .reduce((acc, { 'key': key, 'val': val }) => {
-      if (!val) {
+      if (val === undefined) {
         acc[key] = true
         return acc
       }

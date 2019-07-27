@@ -1,5 +1,6 @@
 import { deepEqual } from '@zoroaster/assert'
 import { extractProps } from '../../src/lib'
+import { extractProps as newExtractProps } from '../../src'
 
 const context = {
   att: 'att',
@@ -9,6 +10,18 @@ const context = {
 }
 
 /** @typedef {context} C */
+
+/** @type {Object.<string, (c: C )>} */
+export const new_api = {
+  'extracts empty string attributes'({ att, att2 }) {
+    const s = `${att}="" ${att2}`
+    const res = newExtractProps(s)
+    deepEqual(res, {
+      [att]: '',
+      [att2]: true,
+    })
+  },
+}
 
 /** @type {Object.<string, (c: C )>} */
 const T = {

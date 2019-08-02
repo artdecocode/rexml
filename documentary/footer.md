@@ -1,5 +1,5 @@
 ## Copyright
 
-<Footer />
+<footer />
 
 %~ -1%

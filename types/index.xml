@@ -1,0 +1,10 @@
+<types namespace="_rexml">
+  <type name="Return" desc="The return type.">
+    <prop type="string" name="content">
+      The content of the tag, including possible whitespace.
+    </prop>
+    <prop type="!Object<string, ?>" name="props">
+      The properties of the element.
+    </prop>
+  </type>
+</types>

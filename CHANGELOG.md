@@ -1,3 +1,9 @@
+## 3 August 2019
+
+### [2.1.0](https://github.com/artdecocode/rexml/compare/v2.0.3...v2.1.0)
+
+- [externs] Add externs of the return type for the compiler.
+
 ## 27 July 2019
 
 ### [2.0.3](https://github.com/artdecocode/rexml/compare/v2.0.2...v2.0.3)

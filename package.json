@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md",
     "e": "alanode",
+    "externs": "typal types/externs.js",
     "example/": "yarn e example/example.js",
     "build": "yarn-s b doc",
     "build-re": "babel src/lib/res0.js -d src/lib/res0.js",
@@ -18,8 +19,10 @@
   },
   "files": [
     "build",
-    "src"
+    "src",
+    "types/externs.js"
   ],
+  "externs": "types/externs.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/artdecocode/rexml.git"
@@ -44,7 +47,7 @@
     "@babel/plugin-proposal-unicode-property-regex": "7.4.4",
     "@babel/register": "7.5.5",
     "alamode": "^2.3.6",
-    "documentary": "^1.28.0",
+    "documentary": "^1.29.0",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
     "zoroaster": "^4.1.1-alpha"

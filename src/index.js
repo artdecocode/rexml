@@ -12,7 +12,7 @@ const execRes = (re, s) => {
 
 /**
  * Extract member elements from an XML string. Numbers and booleans will be parsed into their JS types.
- * @param {string} tag Which tag to extract, e.g., `div`.
+ * @param {string|!Array<string>} tag Which tag to extract, e.g., `div`. Can also pass an array of tags, in which case the name of the tag will also be returned.
  * @param {string} string The XML string.
  * @example
  *
@@ -28,15 +28,17 @@ const execRes = (re, s) => {
  * // props: { id: 1, class: 'test', contenteditable: true }
  */
 const extractTags = (tag, string) => {
+  const tags = Array.isArray(tag) ? tag : [tag]
+  const t = tags.join('|')
   const end1 = /\s*\/>/
-  const end2 = new RegExp(`>([\\s\\S]+?)?</${tag}>`)
-  const re = new RegExp(`<${tag}${simple.source}?(?:${end1.source}|${end2.source})`, 'g')
+  const end2 = />([\s\S]+?)?<\/\1>/
+  const re = new RegExp(`<(${t})${simple.source}?(?:${end1.source}|${end2.source})`, 'g')
 
-  const matches = mismatch(re, string, ['a', 'v', 'v1', 'v2', 'c'])
-  const res = matches.map(({ 'a': attributes = '', 'c': content = '' }) => {
+  const matches = mismatch(re, string, ['t', 'a', 'v', 'v1', 'v2', 'c'])
+  const res = matches.map(({ 't': tagName, 'a': attributes = '', 'c': content = '' }) => {
     const attrs = attributes.replace(/\/$/, '').trim()
     const props = extractProps(attrs)
-    return { content, props }
+    return { content, props, tag: tagName }
   })
   return res
 }

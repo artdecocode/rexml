@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Hello",
+    "props": {},
+    "tag": "type"
+  },
+  {
+    "content": "",
+    "props": {},
+    "tag": "interface"
+  },
+  {
+    "content": "",
+    "props": {},
+    "tag": "prop"
+  }
+]

@@ -24,6 +24,7 @@ const T = {
         props: {
           test: content,
         },
+        tag: 'el',
       },
     ])
   },
@@ -35,6 +36,7 @@ const T = {
       {
         content,
         props: {},
+        tag: 'html',
       },
     ])
   },
@@ -45,6 +47,7 @@ const T = {
       {
         content: '',
         props: { lang: 'en' },
+        tag: 'html',
       },
     ])
   },
@@ -64,6 +67,7 @@ const T = {
           class: 't',
           id: 1,
         },
+        tag: 'div',
       },
     ])
   },
@@ -84,6 +88,7 @@ const T = {
           class: 't',
           id: 1,
         },
+        tag: 'div',
       },
       {
         content,
@@ -91,6 +96,7 @@ const T = {
           class: 't',
           id: 2,
         },
+        tag: 'div',
       },
     ])
   },
@@ -111,6 +117,7 @@ const T = {
           class: 't',
           id: 1,
         },
+        tag: 'div',
       },
       {
         content: c,
@@ -118,6 +125,7 @@ const T = {
           class: 't',
           id: 2,
         },
+        tag: 'div',
       },
     ])
   },
@@ -141,6 +149,7 @@ const T = {
           class: 't',
           id: 1,
         },
+        tag: 'div',
       },
       {
         content,
@@ -148,6 +157,7 @@ const T = {
           class: 't',
           id: 2,
         },
+        tag: 'div',
       },
     ])
   },
@@ -171,16 +181,23 @@ World
       {
         props: {},
         content: '',
+        tag: 'div',
       },
       {
         props: {},
         content: '',
+        tag: 'div',
       },
       {
         props: { type: ' test\n  ' },
         content: ' Hello\nWorld\n  ',
+        tag: 'div',
       },
     ])
+  },
+  'extracts categories'() {
+    const xml = '<type>Hello</type><interface></interface><prop/>'
+    return rexml(['type', 'interface', 'prop'], xml)
   },
 }
 

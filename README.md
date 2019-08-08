@@ -17,6 +17,8 @@ yarn add rexml
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
   * [`extractTags(tag, string): Return`](#extracttagstag-stringarraystringstring-string-return)
+    * [`Return`](#type-return)
+    * [Extracting Multiple Tags](#extracting-multiple-tags)
   * [`extractProps(string: string, parseValue?: boolean): Object<string,(boolean|string|number)>`](#extractpropsstring-stringparsevalue-boolean-objectstringbooleanstringnumber)
   * [`extractTagsSpec(tag: string, string: string): {content, props}[]`](#extracttagsspectag-stringstring-string-content-props)
 - [Copyright](#copyright)
@@ -46,7 +48,6 @@ Extract member elements from an XML string. Numbers and booleans will be parsed 
 The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
 
 ```js
-/* yarn example/ */
 import extractTags from 'rexml'
 
 const xml = `
@@ -60,32 +61,68 @@ const xml = `
 
 const res = extractTags('div', xml)
 
-console.log(JSON.stringify(res, null, 2))
+console.log(res)
 ```
 ```json
-[
-  {
-    "content": "",
-    "props": {
-      "id": "d1",
-      "class": "example",
-      "contenteditable": true
-    },
-    "tag": "div"
-  },
-  {
-    "content": "Hello World",
-    "props": {
-      "id": "d2",
-      "class": "example"
-    },
-    "tag": "div"
-  }
-]
+[ { content: '',
+    props: { id: 'd1', class: 'example', contenteditable: true },
+    tag: 'div' },
+  { content: 'Hello World',
+    props: { id: 'd2', class: 'example' },
+    tag: 'div' } ]
 ```
+
+__<a name="type-return">`Return`</a>__: The return type.
+
+
+|     Name     |            Type             |                      Description                       |
+| ------------ | --------------------------- | ------------------------------------------------------ |
+| __content*__ | <em>string</em>             | The content of the tag, including possible whitespace. |
+| __props*__   | <em>!Object<string, ?></em> | The properties of the element.                         |
+| __tag*__     | <em>string</em>             | The name of the extracted element.                     |
 
 <p align="center"><a href="#table-of-contents">
   <img src="/.documentary/section-breaks/3.svg?sanitize=true" width="25">
+</a></p>
+
+#### Extracting Multiple Tags
+
+It's possible to give an array of tags which should be extracted from the _XML_ string.
+
+<table>
+<tr><th><a href="example/array.js">Source</a></th><th>Output</th></tr>
+<tr><td>
+
+```js
+import extractTags from 'rexml'
+
+const xml = `<html>
+  <div id="d1"/>
+  <div id="d2" class="example">Hello World</div>
+  <footer>Art Deco, 2019</footer>
+</html>
+`
+
+const res = extractTags(['div', 'footer'], xml)
+
+console.log(res)
+```
+</td>
+<td>
+
+```js
+[ { content: '', props: { id: 'd1' }, tag: 'div' },
+  { content: 'Hello World',
+    props: { id: 'd2', class: 'example' },
+    tag: 'div' },
+  { content: 'Art Deco, 2019', props: {}, tag: 'footer' } ]
+```
+</td></tr>
+</table>
+
+
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/4.svg?sanitize=true" width="25">
 </a></p>
 
 ### <code><ins>extractProps</ins>(</code><sub><br/>&nbsp;&nbsp;`string: string,`<br/>&nbsp;&nbsp;`parseValue?: boolean,`<br/></sub><code>): <i>Object<string,(boolean|string|number)></i></code>
@@ -153,7 +190,7 @@ console.log(JSON.stringify(res3, null, 2))
 </table>
 
 <p align="center"><a href="#table-of-contents">
-  <img src="/.documentary/section-breaks/4.svg?sanitize=true" width="25">
+  <img src="/.documentary/section-breaks/5.svg?sanitize=true" width="25">
 </a></p>
 
 ### <code><ins>extractTagsSpec</ins>(</code><sub><br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/></sub><code>): <i>{content, props}[]</i></code>
@@ -187,7 +224,7 @@ console.log(JSON.stringify(res, null, 2))
 ```
 
 <p align="center"><a href="#table-of-contents">
-  <img src="/.documentary/section-breaks/5.svg?sanitize=true">
+  <img src="/.documentary/section-breaks/6.svg?sanitize=true">
 </a></p>
 
 ## Copyright

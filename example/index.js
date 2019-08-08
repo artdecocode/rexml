@@ -1,4 +1,3 @@
-/* yarn example/ */
 import extractTags from '../src'
 
 const xml = `
@@ -12,4 +11,4 @@ const xml = `
 
 const res = extractTags('div', xml)
 
-console.log(JSON.stringify(res, null, 2))
+console.log(res)

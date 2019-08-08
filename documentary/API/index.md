@@ -15,4 +15,26 @@ The tags are returned as an array with objects containing `content` and `props` 
 %EXAMPLE: example, ../src => rexml%
 %FORK-json example%
 
+<typedef>types/index.xml</typedef>
+
+%~ width="25"%
+
+#### Extracting Multiple Tags
+
+It's possible to give an array of tags which should be extracted from the _XML_ string.
+
+<table>
+<tr><th><a href="example/array.js">Source</a></th><th>Output</th></tr>
+<!-- block-start -->
+<tr><td>
+
+%EXAMPLE: example/array, ../src => rexml%
+</td>
+<td>
+
+%FORK-js example/array%
+</td></tr>
+</table>
+
+
 %~ width="25"%

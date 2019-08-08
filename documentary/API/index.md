@@ -12,12 +12,22 @@ import rexml, { extractProps, extractTagsSpec, extractPropSpec } from 'rexml'
 
 The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
 
+<table>
+<tr><th><a href="example/index.js">Source</a></th><th>Output</th></tr>
+<!-- block-start -->
+<tr><td>
+
 %EXAMPLE: example, ../src => rexml%
-%FORK-json example%
+</td>
+<td>
+
+%FORK-js example%
+</td></tr>
+</table>
 
 <typedef>types/index.xml</typedef>
 
-%~ width="25"%
+%~ width="15"%
 
 #### Extracting Multiple Tags
 

@@ -47,6 +47,10 @@ Extract member elements from an XML string. Numbers and booleans will be parsed 
 
 The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
 
+<table>
+<tr><th><a href="example/index.js">Source</a></th><th>Output</th></tr>
+<tr><td>
+
 ```js
 import extractTags from 'rexml'
 
@@ -60,17 +64,23 @@ const xml = `
 `
 
 const res = extractTags('div', xml)
-
-console.log(res)
 ```
-```json
+</td>
+<td>
+
+```js
 [ { content: '',
-    props: { id: 'd1', class: 'example', contenteditable: true },
+    props: 
+     { id: 'd1',
+       class: 'example',
+       contenteditable: true },
     tag: 'div' },
   { content: 'Hello World',
     props: { id: 'd2', class: 'example' },
     tag: 'div' } ]
 ```
+</td></tr>
+</table>
 
 __<a name="type-return">`Return`</a>__: The return type.
 
@@ -82,7 +92,7 @@ __<a name="type-return">`Return`</a>__: The return type.
 | __tag*__     | <em>string</em>             | The name of the extracted element.                     |
 
 <p align="center"><a href="#table-of-contents">
-  <img src="/.documentary/section-breaks/3.svg?sanitize=true" width="25">
+  <img src="/.documentary/section-breaks/3.svg?sanitize=true" width="15">
 </a></p>
 
 #### Extracting Multiple Tags
@@ -104,18 +114,20 @@ const xml = `<html>
 `
 
 const res = extractTags(['div', 'footer'], xml)
-
-console.log(res)
 ```
 </td>
 <td>
 
 ```js
-[ { content: '', props: { id: 'd1' }, tag: 'div' },
+[ { content: '',
+    props: { id: 'd1' },
+    tag: 'div' },
   { content: 'Hello World',
     props: { id: 'd2', class: 'example' },
     tag: 'div' },
-  { content: 'Art Deco, 2019', props: {}, tag: 'footer' } ]
+  { content: 'Art Deco, 2019',
+    props: {},
+    tag: 'footer' } ]
 ```
 </td></tr>
 </table>

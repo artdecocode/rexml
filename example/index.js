@@ -1,3 +1,5 @@
+import { inspect } from 'util'
+/* start example */
 import extractTags from '../src'
 
 const xml = `
@@ -11,4 +13,5 @@ const xml = `
 
 const res = extractTags('div', xml)
 
-console.log(res)
+/* end example */
+console.log(inspect(res, { breakLength: 35, compact: true }))

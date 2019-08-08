@@ -16,7 +16,7 @@ yarn add rexml
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-  * [`rexml(tag: string, string: string): {content, props}[]`](#rexmltag-stringstring-string-content-props)
+  * [`extractTags(tag, string): Return`](#extracttagstag-stringarraystringstring-string-return)
   * [`extractProps(string: string, parseValue?: boolean): Object<string,(boolean|string|number)>`](#extractpropsstring-stringparsevalue-boolean-objectstringbooleanstringnumber)
   * [`extractTagsSpec(tag: string, string: string): {content, props}[]`](#extracttagsspectag-stringstring-string-content-props)
 - [Copyright](#copyright)
@@ -37,11 +37,15 @@ import rexml, { extractProps, extractTagsSpec, extractPropSpec } from 'rexml'
   <img src="/.documentary/section-breaks/2.svg?sanitize=true" width="25">
 </a></p>
 
-### `rexml(`<br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/>`): {content, props}[]`
+### <code><ins>extractTags</ins>(</code><sub><br/>&nbsp;&nbsp;`tag: string|!Array<string>,`<br/>&nbsp;&nbsp;`string: string,`<br/></sub><code>): <i>Return</i></code>
+Extract member elements from an XML string. Numbers and booleans will be parsed into their JS types.
 
-Extract tags from the XML string. The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
+ - <kbd><strong>tag*</strong></kbd> <em><code>(string \| !Array&lt;string&gt;)</code></em>: Which tag to extract, e.g., `div`. Can also pass an array of tags, in which case the name of the tag will also be returned.
+ - <kbd><strong>string*</strong></kbd> <em>`string`</em>: The XML string.
 
-```javascript
+The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
+
+```js
 /* yarn example/ */
 import extractTags from 'rexml'
 
@@ -66,14 +70,16 @@ console.log(JSON.stringify(res, null, 2))
       "id": "d1",
       "class": "example",
       "contenteditable": true
-    }
+    },
+    "tag": "div"
   },
   {
     "content": "Hello World",
     "props": {
       "id": "d2",
       "class": "example"
-    }
+    },
+    "tag": "div"
   }
 ]
 ```
@@ -82,7 +88,7 @@ console.log(JSON.stringify(res, null, 2))
   <img src="/.documentary/section-breaks/3.svg?sanitize=true" width="25">
 </a></p>
 
-### `extractProps(`<br/>&nbsp;&nbsp;`string: string,`<br/>&nbsp;&nbsp;`parseValue?: boolean,`<br/>`): Object<string,(boolean|string|number)>`
+### <code><ins>extractProps</ins>(</code><sub><br/>&nbsp;&nbsp;`string: string,`<br/>&nbsp;&nbsp;`parseValue?: boolean,`<br/></sub><code>): <i>Object<string,(boolean|string|number)></i></code>
 
 Extracts the properties from the attributes part of the tag and returns them as an object. It will parse values if not specified otherwise.
 
@@ -150,7 +156,7 @@ console.log(JSON.stringify(res3, null, 2))
   <img src="/.documentary/section-breaks/4.svg?sanitize=true" width="25">
 </a></p>
 
-### `extractTagsSpec(`<br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/>`): {content, props}[]`
+### <code><ins>extractTagsSpec</ins>(</code><sub><br/>&nbsp;&nbsp;`tag: string,`<br/>&nbsp;&nbsp;`string: string,`<br/></sub><code>): <i>{content, props}[]</i></code>
 
 Same as the default method, but confirms to the XML specification in defining attributes.
 

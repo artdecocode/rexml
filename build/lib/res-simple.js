@@ -6,7 +6,7 @@ const attributeRe = new RegExp(`${nameRe.source}(?:\\s*=\\s*${valRe.source})?`, 
 /**
  * This regex will match all attributes as a string inside of element, e.g., matching `<el attr="abc" bool/>` will result in `attr="abc" bool`.
  */
-const attributesRe = new RegExp(`\\s*((?:${attributeRe.source}\\s*)*)`)
+const attributesRe = new RegExp(`(?:\\s+((?:${attributeRe.source}\\s*)*))`)
 
 
 module.exports.attributeRe = attributeRe

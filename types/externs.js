@@ -7,6 +7,6 @@
 var _rexml = {}
 /**
  * The return type.
- * @typedef {{ content: string, props: !Object<string, ?> }}
+ * @typedef {{ content: string, props: !Object<string, ?>, tag: string }}
  */
 _rexml.Return

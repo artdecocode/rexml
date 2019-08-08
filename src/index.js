@@ -17,12 +17,12 @@ const execRes = (re, s) => {
  * @example
  *
  * const xml = `
-<html>
-  <div id="1" class="test" contenteditable>
-    Hello World
-  </div>
-</html>
-`
+ * <html>
+ *   <div id="1" class="test" contenteditable>
+ *     Hello World
+ *   </div>
+ * </html>
+ * `
  * const [{ content, props }] = extractTag('div', xml)
  * // content: Hello World
  * // props: { id: 1, class: 'test', contenteditable: true }

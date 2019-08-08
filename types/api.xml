@@ -1,0 +1,10 @@
+<types namespace="_rexml">
+  <method name="extractTags" desc="Extract member elements from an XML string. Numbers and booleans will be parsed into their JS types." return="_rexml.Return">
+    <arg name="tag" type="string|!Array<string>">
+      Which tag to extract, e.g., `div`. Can also pass an array of tags, in which case the name of the tag will also be returned.
+    </arg>
+    <arg string name="string">
+      The XML string.
+    </arg>
+  </method>
+</types>

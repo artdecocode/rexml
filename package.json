@@ -5,11 +5,11 @@
   "main": "build/index.js",
   "module": "src/index.js",
   "scripts": {
-    "t": "zoroaster -b -a",
+    "t": "zoroaster -a",
     "test": "yarn t test/spec",
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "lint": "eslint .",
-    "doc": "NODE_DEBUG=doc doc -o README.md",
+    "doc": "NODE_DEBUG=doc doc -o README.md -n _rexml",
     "e": "alanode",
     "externs": "typal types/externs.js",
     "example/": "yarn e example/example.js",
@@ -42,12 +42,9 @@
   },
   "homepage": "https://github.com/artdecocode/rexml#readme",
   "devDependencies": {
-    "@babel/cli": "7.5.5",
-    "@babel/core": "7.5.5",
     "@babel/plugin-proposal-unicode-property-regex": "7.4.4",
-    "@babel/register": "7.5.5",
-    "alamode": "^2.3.6",
-    "documentary": "^1.29.0",
+    "alamode": "^2.4.0",
+    "documentary": "^1.31.0",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
     "zoroaster": "^4.1.1-alpha"

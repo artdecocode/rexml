@@ -8,16 +8,11 @@ import rexml, { extractProps, extractTagsSpec, extractPropSpec } from 'rexml'
 
 %~ width="25"%
 
-```### rexml => {content, props}[]
-[
-  ["tag", "string"],
-  ["string", "string"]
-]
-```
+<typedef level="3" noArgTypesInToc>types/api.xml</typedef>
 
-Extract tags from the XML string. The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
+The tags are returned as an array with objects containing `content` and `props` properties. The content is the inner content of the tag, and `props` is the attributes specified inside the tag.
 
-%EXAMPLE: example, ../src => rexml, javascript%
+%EXAMPLE: example, ../src => rexml%
 %FORK-json example%
 
 %~ width="25"%

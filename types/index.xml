@@ -6,5 +6,8 @@
     <prop type="!Object<string, ?>" name="props">
       The properties of the element.
     </prop>
+    <prop string name="tag">
+      The name of the extracted element.
+    </prop>
   </type>
 </types>

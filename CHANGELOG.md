@@ -1,3 +1,9 @@
+## 8 August 2019
+
+### [2.2.0](https://github.com/artdecocode/rexml/compare/v2.1.0...v2.2.0)
+
+- [feature] Extract multiple tags at the same time.
+
 ## 3 August 2019
 
 ### [2.1.0](https://github.com/artdecocode/rexml/compare/v2.0.3...v2.1.0)

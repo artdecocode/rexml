@@ -1,5 +1,9 @@
 ## 8 August 2019
 
+### [2.2.2](https://github.com/artdecocode/rexml/compare/v2.2.1...v2.2.2)
+
+- [republish] Publish again due to `yarn` lag.
+
 ### [2.2.1](https://github.com/artdecocode/rexml/compare/v2.2.0...v2.2.1)
 
 - [republish] Publish again due to `yarn` lag.
